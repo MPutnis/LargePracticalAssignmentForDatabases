@@ -82,8 +82,53 @@ CREATE TABLE Pasutijumi(
 )
 GO
 
-    -- Produktu Atlikums, Sadalījums pa Noliktavām un Pasūtījumiem
+    -- Produktu Atlikums, Sadalījums pa Noliktavām un Pasūtījumiem, Rezervācijas
 
+-- Produktu atlikums
+CREATE TABLE ProduktuAtlikums(
+    Serija VARCHAR(7) NOT NULL,
+    Nosaukums NVARCHAR(255) NOT NULL,
+    PRIMARY KEY( Serija, Nosaukums),
+    SkirnesID CHAR(5),
+    RekinaNr VARCHAR(10) NOT NULL 
+        FOREIGN KEY REFERENCES Piegades(RekinaNr)
+    -- Atlikums
+    -- Pašizmaksa
+    -- 10%Cena
+    -- 20%Cena
+    -- 50%Cena
+)
+GO
+-- Produktu Sadalījums
+CREATE TABLE ProduktuSadalijums(
+    NoliktavasNumurs TINYINT NOT NULL 
+        FOREIGN KEY REFERENCES Noliktavas(Numurs),
+    ProduktaSerija VARCHAR(7) NOT NULL
+        FOREIGN KEY REFERENCES ProduktuAtlikums(Serija),
+    ProduktaNosaukums NVARCHAR(255) NOT NULL
+        FOREIGN KEY REFERENCES ProduktuAtlikums(Nosaukums)
+)
+GO
+-- Produkti Pasūtījumā
+CREATE TABLE ProduktiPasutijuma(
+    ProduktaSerija VARCHAR(7) NOT NULL
+        FOREIGN KEY REFERENCES ProduktuAtlikums(Serija),
+    ProduktaNosaukums NVARCHAR(255) NOT NULL
+        FOREIGN KEY REFERENCES ProduktuAtlikums(Nosaukums),
+    PasutijumaNumurs VARCHAR(7) NOT NULL
+        FOREIGN KEY REFERENCES Pasutijumi(PasutijumaNr)
+)
+GO
+-- Rezervācijas
+CREATE TABLE Rezervacijas(
+    DarbiniekaID SMALLINT NOT NULL
+    FOREIGN KEY REFERENCES Darbinieki(ID),
+    ProduktaSerija VARCHAR(7) NOT NULL
+        FOREIGN KEY REFERENCES ProduktuAtlikums(Serija),
+    ProduktaNosaukums NVARCHAR(255) NOT NULL
+        FOREIGN KEY REFERENCES ProduktuAtlikums(Nosaukums)
+)
+GO
     -- Produktu Grupu tabulas
 
 -- Vispārīgās Produktu Grupas
@@ -109,4 +154,10 @@ CREATE TABLE Skirnes(
     LielasProduktuGrupasID CHAR(5)
         FOREIGN KEY REFERENCES LielasProduktuGrupas(Kods)
 )
+GO
+
+-- Foreign Key no ProduktuAtlikums uz Skirnes
+ALTER TABLE ProduktuAtlikums ADD
+    FOREIGN KEY (SkirnesID) 
+        REFERENCES Skirnes(Kods)
 GO
