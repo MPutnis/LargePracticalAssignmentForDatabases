@@ -103,18 +103,18 @@ GO
 CREATE TABLE ProduktuSadalijums(
     NoliktavasNumurs TINYINT NOT NULL 
         FOREIGN KEY REFERENCES Noliktavas(Numurs),
-    ProduktaSerija VARCHAR(7) NOT NULL
-        FOREIGN KEY REFERENCES ProduktuAtlikums(Serija),
-    ProduktaNosaukums NVARCHAR(255) NOT NULL
-        FOREIGN KEY REFERENCES ProduktuAtlikums(Nosaukums)
+    ProduktaSerija VARCHAR(7) NOT NULL,
+    ProduktaNosaukums NVARCHAR(255) NOT NULL,
+    FOREIGN KEY(ProduktaSerija,ProduktaNosaukums) 
+        REFERENCES ProduktuAtlikums(Serija,Nosaukums)
 )
 GO
 -- Produkti Pasūtījumā
 CREATE TABLE ProduktiPasutijuma(
-    ProduktaSerija VARCHAR(7) NOT NULL
-        FOREIGN KEY REFERENCES ProduktuAtlikums(Serija),
-    ProduktaNosaukums NVARCHAR(255) NOT NULL
-        FOREIGN KEY REFERENCES ProduktuAtlikums(Nosaukums),
+    ProduktaSerija VARCHAR(7) NOT NULL,
+    ProduktaNosaukums NVARCHAR(255) NOT NULL,
+    FOREIGN KEY(ProduktaSerija,ProduktaNosaukums) 
+        REFERENCES ProduktuAtlikums(Serija,Nosaukums),
     PasutijumaNumurs VARCHAR(7) NOT NULL
         FOREIGN KEY REFERENCES Pasutijumi(PasutijumaNr)
 )
@@ -123,10 +123,10 @@ GO
 CREATE TABLE Rezervacijas(
     DarbiniekaID SMALLINT NOT NULL
     FOREIGN KEY REFERENCES Darbinieki(ID),
-    ProduktaSerija VARCHAR(7) NOT NULL
-        FOREIGN KEY REFERENCES ProduktuAtlikums(Serija),
-    ProduktaNosaukums NVARCHAR(255) NOT NULL
-        FOREIGN KEY REFERENCES ProduktuAtlikums(Nosaukums)
+    ProduktaSerija VARCHAR(7) NOT NULL,
+    ProduktaNosaukums NVARCHAR(255) NOT NULL,
+    FOREIGN KEY(ProduktaSerija,ProduktaNosaukums) 
+        REFERENCES ProduktuAtlikums(Serija,Nosaukums)
 )
 GO
     -- Produktu Grupu tabulas
@@ -143,7 +143,7 @@ CREATE TABLE LielasProduktuGrupas(
     Kods CHAR(5) NOT NULL PRIMARY KEY,
     Nosaukums NVARCHAR(20),
     VisparigasProduktuGrupasID CHAR(5)
-        FOREIGN KEY REFERENCES VisparigasProduktuGruppas(Kods) 
+        FOREIGN KEY REFERENCES VisparigasProduktuGrupas(Kods) 
 )
 GO
 
