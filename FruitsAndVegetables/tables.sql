@@ -41,14 +41,14 @@ GO
 -- Piegādes
 CREATE TABLE Piegades(
     RekinaNr VARCHAR(10) NOT NULL PRIMARY KEY,
-    DaudzumsKg DECIMAL(8,3) NOT NULL,
-    IepirkumaCenaKg SMALLMONEY NOT NULL,
     ProduktaKopejaCena SMALLMONEY,
     PiegadesDatums DATE,
     PiegadatajaID VARCHAR(6) FOREIGN KEY REFERENCES Piegadataji(ID)
 )
 GO
-
+alter table Piegades
+drop column ProduktaKopejaCena
+go
     -- Klienti, to Adreses un Pasūtījumi
 
 -- Klienti
@@ -56,7 +56,7 @@ CREATE TABLE Klienti(
     ID VARCHAR(6) NOT NULL PRIMARY KEY,
     Nosaukums NVARCHAR(100),
     RegistracijasNr VARCHAR(15),
-    KontaNr VARCHAR(15),
+    KontaNr VARCHAR(17),
     MenedzerisID SMALLINT
         FOREIGN KEY REFERENCES Darbinieki(ID)
 )
@@ -72,8 +72,6 @@ GO
 -- Pasūtījumi
 CREATE TABLE Pasutijumi(
     PasutijumaNr VARCHAR(7) NOT NULL PRIMARY KEY,
-    DaudzumsKg DECIMAL(8,3),
-    PardosanasCenaKg SMALLMONEY,
     KomplektesanasDatums DATE,
     KomplektetajaID SMALLINT
         FOREIGN KEY REFERENCES Darbinieki(ID),
@@ -91,7 +89,9 @@ CREATE TABLE ProduktuAtlikums(
     PRIMARY KEY( Serija, Nosaukums),
     SkirnesID CHAR(5),
     RekinaNr VARCHAR(10) NOT NULL 
-        FOREIGN KEY REFERENCES Piegades(RekinaNr)
+        FOREIGN KEY REFERENCES Piegades(RekinaNr),
+    PiegadataisDaudzumsKg DECIMAL(8,3) NOT NULL,
+    IepirkumaCenaKg SMALLMONEY NOT NULL,
     -- Atlikums
     -- Pašizmaksa
     -- 10%Cena
@@ -116,7 +116,9 @@ CREATE TABLE ProduktiPasutijuma(
     FOREIGN KEY(ProduktaSerija,ProduktaNosaukums) 
         REFERENCES ProduktuAtlikums(Serija,Nosaukums),
     PasutijumaNumurs VARCHAR(7) NOT NULL
-        FOREIGN KEY REFERENCES Pasutijumi(PasutijumaNr)
+        FOREIGN KEY REFERENCES Pasutijumi(PasutijumaNr),
+    DaudzumsKg DECIMAL(8,3),
+    PardosanasCenaKg SMALLMONEY,
 )
 GO
 -- Rezervācijas
@@ -126,7 +128,8 @@ CREATE TABLE Rezervacijas(
     ProduktaSerija VARCHAR(7) NOT NULL,
     ProduktaNosaukums NVARCHAR(100) NOT NULL,
     FOREIGN KEY(ProduktaSerija,ProduktaNosaukums) 
-        REFERENCES ProduktuAtlikums(Serija,Nosaukums)
+        REFERENCES ProduktuAtlikums(Serija,Nosaukums),
+    RezervetiKg DECIMAL(8,3)
 )
 GO
     -- Produktu Grupu tabulas
