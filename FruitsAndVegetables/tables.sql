@@ -17,7 +17,7 @@ GO
 CREATE TABLE Noliktavas(
     Numurs TINYINT NOT NULL PRIMARY KEY,
     Nosaukums CHAR(11),
-    Adrese NVARCHAR
+    Adrese NVARCHAR(100)
 )
 GO
 
@@ -87,7 +87,7 @@ GO
 -- Produktu atlikums
 CREATE TABLE ProduktuAtlikums(
     Serija VARCHAR(7) NOT NULL,
-    Nosaukums NVARCHAR(255) NOT NULL,
+    Nosaukums NVARCHAR(100) NOT NULL,
     PRIMARY KEY( Serija, Nosaukums),
     SkirnesID CHAR(5),
     RekinaNr VARCHAR(10) NOT NULL 
@@ -104,7 +104,7 @@ CREATE TABLE ProduktuSadalijums(
     NoliktavasNumurs TINYINT NOT NULL 
         FOREIGN KEY REFERENCES Noliktavas(Numurs),
     ProduktaSerija VARCHAR(7) NOT NULL,
-    ProduktaNosaukums NVARCHAR(255) NOT NULL,
+    ProduktaNosaukums NVARCHAR(100) NOT NULL,
     FOREIGN KEY(ProduktaSerija,ProduktaNosaukums) 
         REFERENCES ProduktuAtlikums(Serija,Nosaukums)
 )
@@ -112,7 +112,7 @@ GO
 -- Produkti Pasūtījumā
 CREATE TABLE ProduktiPasutijuma(
     ProduktaSerija VARCHAR(7) NOT NULL,
-    ProduktaNosaukums NVARCHAR(255) NOT NULL,
+    ProduktaNosaukums NVARCHAR(100) NOT NULL,
     FOREIGN KEY(ProduktaSerija,ProduktaNosaukums) 
         REFERENCES ProduktuAtlikums(Serija,Nosaukums),
     PasutijumaNumurs VARCHAR(7) NOT NULL
@@ -124,7 +124,7 @@ CREATE TABLE Rezervacijas(
     DarbiniekaID SMALLINT NOT NULL
     FOREIGN KEY REFERENCES Darbinieki(ID),
     ProduktaSerija VARCHAR(7) NOT NULL,
-    ProduktaNosaukums NVARCHAR(255) NOT NULL,
+    ProduktaNosaukums NVARCHAR(100) NOT NULL,
     FOREIGN KEY(ProduktaSerija,ProduktaNosaukums) 
         REFERENCES ProduktuAtlikums(Serija,Nosaukums)
 )
