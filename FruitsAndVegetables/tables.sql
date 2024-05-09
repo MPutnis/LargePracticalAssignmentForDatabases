@@ -41,14 +41,10 @@ GO
 -- Piegādes
 CREATE TABLE Piegades(
     RekinaNr VARCHAR(10) NOT NULL PRIMARY KEY,
-    ProduktaKopejaCena SMALLMONEY,
     PiegadesDatums DATE,
     PiegadatajaID VARCHAR(6) FOREIGN KEY REFERENCES Piegadataji(ID)
 )
-GO
-alter table Piegades
-drop column ProduktaKopejaCena
-go
+
     -- Klienti, to Adreses un Pasūtījumi
 
 -- Klienti
@@ -76,7 +72,9 @@ CREATE TABLE Pasutijumi(
     KomplektetajaID SMALLINT
         FOREIGN KEY REFERENCES Darbinieki(ID),
     KlientaID VARCHAR(6) NOT NULL
-        FOREIGN KEY REFERENCES Klienti(ID)
+        FOREIGN KEY REFERENCES Klienti(ID),
+    NoliktavasID TINYINT 
+        FOREIGN KEY REFERENCES Noliktavas(Numurs)
 )
 GO
 
@@ -106,9 +104,11 @@ CREATE TABLE ProduktuSadalijums(
     ProduktaSerija VARCHAR(7) NOT NULL,
     ProduktaNosaukums NVARCHAR(100) NOT NULL,
     FOREIGN KEY(ProduktaSerija,ProduktaNosaukums) 
-        REFERENCES ProduktuAtlikums(Serija,Nosaukums)
+        REFERENCES ProduktuAtlikums(Serija,Nosaukums),
+    PieejamaisAtlikumsKg DECIMAL(8,3)
 )
 GO
+
 -- Produkti Pasūtījumā
 CREATE TABLE ProduktiPasutijuma(
     ProduktaSerija VARCHAR(7) NOT NULL,
