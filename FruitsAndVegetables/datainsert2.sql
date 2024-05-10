@@ -143,10 +143,10 @@ INSERT INTO ProduktuAtlikums
     ('241402', 'Banāni Mini, 12gab., CR', 14.3253, 1920, 'min05', '2498638'),
     ('241402', 'Banāni Bio Banderole, EC', 1.1317, 8707.2, 'bnd06', '5076354')
 GO
--- ProduktuSadalijums( NoliktavasNumurs, ProduktaSerija, ProduktaNosaukums, PieejamaisAtlikumsKg)
+-- ProduktuSadalijums( NoliktavasNumurs, ProduktaSerija, ProduktaNosaukums, PiegadataisAtlikumsKg)
 -- Banāni piesaistīti trešajai noliktavai
 INSERT INTO ProduktuSadalijums
-    (NoliktavasNumurs, ProduktaSerija, ProduktaNosaukums, PieejamaisAtlikumsKg) 
+    (NoliktavasNumurs, ProduktaSerija, ProduktaNosaukums, PiegadataisAtlikumsKg) 
     VALUES
     (3, '240501', 'Banāni negatavi, CO', 20897.28),
     (3, '240502', 'Banāni Bio Dole, EC', 9795.6),
@@ -210,7 +210,26 @@ INSERT INTO ProduktuSadalijums
 GO
 -- Rezervacijas( DarbiniekaID, ProduktaSerija, ProduktaNosaukums, RezervetiKg(8,3))
 
--- Pasutijumi( PasutijumaNr(7), KomplektesanasDatums, KomplektetajaID, KlientaID)
-
+-- Pasutijumi( PasutijumaNr(7), KomplektesanasDatums, KomplektetajaID, KlientaID, NoliktavasID)
+INSERT INTO Pasutijumi (PasutijumaNr, KomplektesanasDatums, KomplektetajaID, KlientaID, NoliktavasID)
+    VALUES
+    ('24-0132', '2024-02-05', 1013, 'srio03', 3),
+    ('24-0133', '2024-02-05', 1014, 'srit99', 3)
+GO
 -- ProduktiPasutijuma( ProduktaSerija, ProduktaNosaukums, PasutijumaNumurs,
     -- DaudzumsKg, PardosanasCenaKg,)
+
+INSERT INTO ProduktiPasutijuma (ProduktaSerija, ProduktaNosaukums, PasutijumaNumurs, DaudzumsKg, PardosanasCenaKg)
+    VALUES
+    ('240501', 'Banāni negatavi, CO', '24-0132', 8707.2, 0.9201),
+    ('240502', 'Banāni Bio Dole, EC', '24-0132', 870.2, 1.2517),
+    ('240502', 'Banāni Red, EC', '24-0132', 120, 1.2301),
+    ('240502', 'Banāni Mini, 12gab., CR', '24-0132', 60, 16.1002),
+    ('240502', 'Banāni Bio Banderole, EC', '24-0132', 870.2, 1.2517),
+
+    ('240501', 'Banāni negatavi, CO', '24-0133', 6095.04, 0.9201),
+    ('240502', 'Banāni Bio Dole, EC', '24-0132', 1306.08, 1.2517),
+    ('240502', 'Banāni Red, EC', '24-0132', 136, 1.2301),
+    ('240502', 'Banāni Mini, 12gab., CR', '24-0132', 96, 16.1002),
+    ('240502', 'Banāni Bio Banderole, EC', '24-0132', 435.36, 1.2517)
+GO

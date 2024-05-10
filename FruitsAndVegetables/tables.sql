@@ -105,10 +105,41 @@ CREATE TABLE ProduktuSadalijums(
     ProduktaNosaukums NVARCHAR(100) NOT NULL,
     FOREIGN KEY(ProduktaSerija,ProduktaNosaukums) 
         REFERENCES ProduktuAtlikums(Serija,Nosaukums),
-    PieejamaisAtlikumsKg DECIMAL(8,3)
+    PiegadataisAtlikumsKg DECIMAL(8,3)
 )
 GO
+-- Funkcija  tekošā atlikuma aprēķinam 
+CREATE FUNCTION dbo.AtlikumaAprekins (
+    @NoliktavasNumurs TINYINT,
+    @ProduktaSerija VARCHAR(7),
+    @ProduktaNosaukums NVARCHAR(100)
+)
+RETURNS DECIMAL(8,3)
+AS
+BEGIN
+    DECLARE @Atlikums DECIMAL(8,3);
+    SELECT @Atlikums = ISNULL(
+        -- Iegūst daudzumu kurš tika piegādāts uz noliktavu
+        (SELECT PiegadataisAtlikumsKg FROM ProduktuSadalijums 
+        WHERE ProduktaSerija = @ProduktaSerija 
+        AND ProduktaNosaukums = @ProduktaNosaukums), 0
+    ) - ISNULL(
+        -- saskaita visus atbilstošā produkta pārdotos daudzums atbilstošajā noliktavā
+        (SELECT SUM(PP.DaudzumsKg)
+        FROM ProduktiPasutijuma PP
+        INNER JOIN Pasutijumi P ON PP.PasutijumaNumurs = P.PasutijumaNr
+        WHERE PP.ProduktaSerija = @ProduktaSerija
+        AND PP.ProduktaNosaukums = @ProduktaNosaukums
+        AND P.NoliktavasID = @NoliktavasNumurs),
+        0
+    );
 
+    RETURN @Atlikums;
+END
+GO
+ALTER TABLE ProduktuSadalijums
+ADD Atlikums AS dbo.AtlikumaAprekins( NoliktavasNumurs, ProduktaSerija, ProduktaNosaukums)
+GO
 -- Produkti Pasūtījumā
 CREATE TABLE ProduktiPasutijuma(
     ProduktaSerija VARCHAR(7) NOT NULL,
