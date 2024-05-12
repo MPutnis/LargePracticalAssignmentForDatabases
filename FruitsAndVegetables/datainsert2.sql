@@ -86,63 +86,64 @@ INSERT INTO ProduktuAtlikums
     ('240501', 'Banāni negatavi, CO', 0.8340, 20897.28, 'cav01', '8947532'),
     ('240502', 'Banāni Bio Dole, EC', 1.1317, 9795.6, 'bba04', '65798421'),
     ('240502', 'Banāni Red, EC', 1.0765, 1280, 'red03', '65798421'),
-    ('240502', 'Banāni Mini, 12gab., CR', 14.3253, 1920, 'min05', '65798421'),
+    ('240502', 'Banāni Mini, 12gab., CR', 1.193, 1920, 'min05', '65798421'),
     ('240502', 'Banāni Bio Banderole, EC', 1.1317, 8707.2, 'bnd06', '38924657'),
 
     ('240601', 'Banāni negatavi, CO', 0.8340, 20897.28, 'cav01', '364702985'),
     ('240602', 'Banāni Bio Dole, EC', 1.1317, 9795.6, 'bba04', '73925846'),
     ('240602', 'Banāni Red, EC', 1.0765, 1280, 'red03', '73925846'),
-    ('240602', 'Banāni Mini, 12gab., CR', 14.3253, 1920, 'min05', '73925846'),
+    ('240602', 'Banāni Mini, 12gab., CR', 1.193, 1920, 'min05', '73925846'),
     ('240602', 'Banāni Bio Banderole, EC', 1.1317, 8707.2, 'bnd06', '5076249'),
 
     ('240701', 'Banāni negatavi, CO', 0.8340, 20897.28, 'cav01', '2497638'),
     ('240702', 'Banāni Bio Dole, EC', 1.1317, 9795.6, 'bba04', '7358492'),
     ('240702', 'Banāni Red, EC', 1.0765, 1280, 'red03', '7358492'),
-    ('240702', 'Banāni Mini, 12gab., CR', 14.3253, 1920, 'min05', '7358492'),
+    ('240702', 'Banāni Mini, 12gab., CR', 1.193, 1920, 'min05', '7358492'),
     ('240702', 'Banāni Bio Banderole, EC', 1.1317, 8707.2, 'bnd06', '9203786'),
 
     ('240801', 'Banāni negatavi, CO', 0.8340, 20897.28, 'cav01', '89736254'),
     ('240802', 'Banāni Bio Dole, EC', 1.1317, 9795.6, 'bba04', '4820573'),
     ('240802', 'Banāni Red, EC', 1.0765, 1280, 'red03', '4820573'),
-    ('240802', 'Banāni Mini, 12gab., CR', 14.3253, 1920, 'min05', '4820573'),
+    ('240802', 'Banāni Mini, 12gab., CR', 1.193, 1920, 'min05', '4820573'),
     ('240802', 'Banāni Bio Banderole, EC', 1.1317, 8707.2, 'bnd06', '64987235'),
 
     ('240901', 'Banāni negatavi, CO', 0.8340, 20897.28, 'cav01', '72984635'),
     ('240902', 'Banāni Bio Dole, EC', 1.1317, 9795.6, 'bba04', '5049862'),
     ('240902', 'Banāni Red, EC', 1.0765, 1280, 'red03', '5049862'),
-    ('240902', 'Banāni Mini, 12gab., CR', 14.3253, 1920, 'min05', '5049862'),
+    ('240902', 'Banāni Mini, 12gab., CR', 1.193, 1920, 'min05', '5049862'),
     ('240902', 'Banāni Bio Banderole, EC', 1.1317, 8707.2, 'bnd06', '347612985'),
 
     ('241001', 'Banāni negatavi, CO', 0.8340, 20897.28, 'cav01', '23896471'),
     ('241002', 'Banāni Bio Dole, EC', 1.1317, 9795.6, 'bba04', '79236485'),
     ('241002', 'Banāni Red, EC', 1.0765, 1280, 'red03', '79236485'),
-    ('241002', 'Banāni Mini, 12gab., CR', 14.3253, 1920, 'min05', '79236485'),
+    ('241002', 'Banāni Mini, 12gab., CR', 1.193, 1920, 'min05', '79236485'),
     ('241002', 'Banāni Bio Banderole, EC', 1.1317, 8707.2, 'bnd06', '4067392'),
 
     ('241101', 'Banāni negatavi, CO', 0.8340, 20897.28, 'cav01', '9873564'),
     ('241102', 'Banāni Bio Dole, EC', 1.1317, 9795.6, 'bba04', '24079863'),
     ('241102', 'Banāni Red, EC', 1.0765, 1280, 'red03', '24079863'),
-    ('241102', 'Banāni Mini, 12gab., CR', 14.3253, 1920, 'min05', '24079863'),
+    ('241102', 'Banāni Mini, 12gab., CR', 1.193, 1920, 'min05', '24079863'),
     ('241102', 'Banāni Bio Banderole, EC', 1.1317, 8707.2, 'bnd06', '38674529'),
 
     ('241201', 'Banāni negatavi, CO', 0.8340, 20897.28, 'cav01', '8948532'),
     ('241202', 'Banāni Bio Dole, EC', 1.1317, 9795.6, 'bba04', '65808421'),
     ('241202', 'Banāni Red, EC', 1.0765, 1280, 'red03', '65808421'),
-    ('241202', 'Banāni Mini, 12gab., CR', 14.3253, 1920, 'min05', '65808421'),
+    ('241202', 'Banāni Mini, 12gab., CR', 1.193, 1920, 'min05', '65808421'),
     ('241202', 'Banāni Bio Banderole, EC', 1.1317, 8707.2, 'bnd06', '38934657'),
 
     ('241301', 'Banāni negatavi, CO', 0.8340, 20897.28, 'cav01', '364712985'),
     ('241302', 'Banāni Bio Dole, EC', 1.1317, 9795.6, 'bba04', '73935846'),
     ('241302', 'Banāni Red, EC', 1.0765, 1280, 'red03', '73935846'),
-    ('241302', 'Banāni Mini, 12gab., CR', 14.3253, 1920, 'min05', '73935846'),
+    ('241302', 'Banāni Mini, 12gab., CR', 1.193, 1920, 'min05', '73935846'),
     ('241302', 'Banāni Bio Banderole, EC', 1.1317, 8707.2, 'bnd06', '5077249'),
 
     ('241401', 'Banāni negatavi, CO', 0.8340, 20897.28, 'cav01', '6760321'),
     ('241402', 'Banāni Bio Dole, EC', 1.1317, 9795.6, 'bba04', '2498638'),
     ('241402', 'Banāni Red, EC', 1.0765, 1280, 'red03', '2498638'),
-    ('241402', 'Banāni Mini, 12gab., CR', 14.3253, 1920, 'min05', '2498638'),
+    ('241402', 'Banāni Mini, 12gab., CR', 1.193, 1920, 'min05', '2498638'),
     ('241402', 'Banāni Bio Banderole, EC', 1.1317, 8707.2, 'bnd06', '5076354')
 GO
+ 
 -- ProduktuSadalijums( NoliktavasNumurs, ProduktaSerija, ProduktaNosaukums, PiegadataisAtlikumsKg)
 -- Banāni piesaistīti trešajai noliktavai
 INSERT INTO ProduktuSadalijums
@@ -216,20 +217,203 @@ INSERT INTO Pasutijumi (PasutijumaNr, KomplektesanasDatums, KomplektetajaID, Kli
     ('24-0132', '2024-02-05', 1013, 'srio03', 3),
     ('24-0133', '2024-02-05', 1014, 'srit99', 3)
 GO
+INSERT INTO Pasutijumi(PasutijumaNr, KomplektesanasDatums, KomplektetajaID, KlientaID, NoliktavasID)
+    VALUES
+    ('24-0134', '2024-02-05', 1014, 'srit99', 3)
+GO
+INSERT INTO Pasutijumi(PasutijumaNr, KomplektesanasDatums, KomplektetajaID, KlientaID, NoliktavasID)
+    VALUES
+    ('24-0135', '2024-02-05', 1013, 'frui85', 3), --1pal ban
+    ('24-0136', '2024-02-05', 1014, 'vege89', 3), --1pal ban
+    ('24-0137', '2024-02-05', 1014, 'ogle99', 3), --5pal ban
+
+    ('24-0138', '2024-02-06', 1012, 'srio03', 3),
+    ('24-0139', '2024-02-06', 1012, 'srit99', 3),
+    ('24-0140', '2024-02-06', 1013, 'srit99', 3),
+    ('24-0141', '2024-02-06', 1013, 'frui85', 3), --1pal ban
+    ('24-0142', '2024-02-06', 1013, 'vege89', 3), --1pal ban
+    ('24-0143', '2024-02-06', 1012, 'ogle99', 3), --5pal ban
+
+    ('24-0144', '2024-02-12', 1013, 'srio03', 3),
+    ('24-0145', '2024-02-12', 1014, 'srit99', 3),
+    ('24-0146', '2024-02-12', 1014, 'srit99', 3),
+    ('24-0147', '2024-02-12', 1013, 'frui85', 3), --1pal ban
+    ('24-0148', '2024-02-12', 1014, 'vege89', 3), --1pal ban
+    ('24-0149', '2024-02-12', 1014, 'ogle99', 3), --5pal ban
+
+    ('24-0150', '2024-02-13', 1013, 'srio03', 3),
+    ('24-0151', '2024-02-13', 1012, 'srit99', 3),
+    ('24-0152', '2024-02-13', 1012, 'srit99', 3),
+    ('24-0153', '2024-02-13', 1013, 'frui85', 3), --1pal ban
+    ('24-0154', '2024-02-13', 1014, 'vege89', 3), --1pal ban
+    ('24-0155', '2024-02-13', 1014, 'ogle99', 3), --5pal ban
+
+    ('24-0156', '2024-04-01', 1012, 'srio03', 3),
+    ('24-0157', '2024-04-01', 1014, 'srit99', 3),
+    ('24-0158', '2024-04-01', 1012, 'srit99', 3),
+    ('24-0159', '2024-04-01', 1014, 'frui85', 3), --1pal ban
+    ('24-0160', '2024-04-01', 1014, 'vege89', 3), --1pal ban
+    ('24-0161', '2024-04-01', 1014, 'ogle99', 3), --5pal ban
+
+    ('24-0162', '2024-04-06', 1012, 'srio03', 3),
+    ('24-0163', '2024-04-06', 1012, 'srit99', 3),
+    ('24-0164', '2024-04-06', 1013, 'srit99', 3),
+    ('24-0165', '2024-04-06', 1013, 'frui85', 3), --1pal ban
+    ('24-0166', '2024-04-06', 1012, 'vege89', 3), --1pal ban
+    ('24-0167', '2024-04-06', 1013, 'ogle99', 3) --5pal ban
+GO
 -- ProduktiPasutijuma( ProduktaSerija, ProduktaNosaukums, PasutijumaNumurs,
     -- DaudzumsKg, PardosanasCenaKg,)
 
 INSERT INTO ProduktiPasutijuma (ProduktaSerija, ProduktaNosaukums, PasutijumaNumurs, DaudzumsKg, PardosanasCenaKg)
     VALUES
-    ('240501', 'Banāni negatavi, CO', '24-0132', 8707.2, 0.9201),
-    ('240502', 'Banāni Bio Dole, EC', '24-0132', 870.2, 1.2517),
-    ('240502', 'Banāni Red, EC', '24-0132', 120, 1.2301),
-    ('240502', 'Banāni Mini, 12gab., CR', '24-0132', 60, 16.1002),
-    ('240502', 'Banāni Bio Banderole, EC', '24-0132', 870.2, 1.2517),
+    ('240501', 'Banāni negatavi, CO', '24-0132', 8707.2, 1.1501),
+    ('240502', 'Banāni Bio Dole, EC', '24-0132', 870.2, 1.5517),
+    ('240502', 'Banāni Red, EC', '24-0132', 120, 1.5001),
+    ('240502', 'Banāni Mini, 12gab., CR', '24-0132', 60, 1.7179),
+    ('240502', 'Banāni Bio Banderole, EC', '24-0132', 870.2, 1.5517),
 
-    ('240501', 'Banāni negatavi, CO', '24-0133', 6095.04, 0.9201),
-    ('240502', 'Banāni Bio Dole, EC', '24-0132', 1306.08, 1.2517),
-    ('240502', 'Banāni Red, EC', '24-0132', 136, 1.2301),
-    ('240502', 'Banāni Mini, 12gab., CR', '24-0132', 96, 16.1002),
-    ('240502', 'Banāni Bio Banderole, EC', '24-0132', 435.36, 1.2517)
+    ('240501', 'Banāni negatavi, CO', '24-0133', 6095.04, 1.1501),
+    ('240502', 'Banāni Bio Dole, EC', '24-0133', 1306.08, 1.5517),
+    ('240502', 'Banāni Red, EC', '24-0133', 136, 1.5001),
+    ('240502', 'Banāni Mini, 12gab., CR', '24-0133', 96, 1.7179),
+    ('240502', 'Banāni Bio Banderole, EC', '24-0133', 435.36, 1.5517)
+GO
+
+INSERT INTO ProduktiPasutijuma (ProduktaSerija, ProduktaNosaukums, PasutijumaNumurs, DaudzumsKg, PardosanasCenaKg)
+    VALUES
+    ('240502', 'Banāni Bio Dole, EC', '24-0134', 1306.08, 1.5517),
+    ('240502', 'Banāni Red, EC', '24-0134', 136, 1.5001),
+    ('240502', 'Banāni Mini, 12gab., CR', '24-0134', 96, 1.7179),
+    ('240502', 'Banāni Bio Banderole, EC', '24-0134', 435.36, 1.5517)
+GO
+
+INSERT INTO ProduktiPasutijuma (ProduktaSerija, ProduktaNosaukums, PasutijumaNumurs, DaudzumsKg, PardosanasCenaKg)
+    VALUES
+	('240502', 'Banāni Bio Banderole, EC', '24-0135', 2401.64, 1.653),
+	('240502', 'Banāni Mini, 12gab., CR', '24-0135', 108, 1.7325),
+	('240502', 'Banāni Red, EC', '24-0135', 512.0, 1.653),
+
+	('240502', 'Banāni Bio Dole, EC', '24-0136', 2619.32, 1.683),
+	('240502', 'Banāni Mini, 12gab., CR', '24-0136', 216, 1.7325),
+	('240502', 'Banāni Red, EC', '24-0136', 376.0, 1.653),
+
+	('240502', 'Banāni Bio Banderole, EC', '24-0137', 1250, 1.653),
+	('240502', 'Banāni Bio Dole, EC', '24-0137', 1250, 1.653)
+GO
+
+INSERT INTO ProduktiPasutijuma (ProduktaSerija, ProduktaNosaukums, PasutijumaNumurs, DaudzumsKg, PardosanasCenaKg)
+    VALUES
+    ('240501', 'Banāni negatavi, CO', '24-0138', 3095.04, 1.1501),
+    ('240502', 'Banāni Bio Dole, EC', '24-0138', 800.0, 1.5517),
+    ('240502', 'Banāni Mini, 12gab., CR', '24-0138', 96, 1.7179),
+    ('240502', 'Banāni Bio Banderole, EC', '24-0138', 1314.64, 1.5517),
+
+    ('240501', 'Banāni negatavi, CO', '24-0139', 3000.0, 1.1501),
+    ('240502', 'Banāni Bio Dole, EC', '24-0139', 800.0, 1.5517),
+    ('240502', 'Banāni Mini, 12gab., CR', '24-0139', 120, 1.7179),
+    ('240502', 'Banāni Bio Banderole, EC', '24-0139', 1000.0, 1.5517),
+
+	('240502', 'Banāni Bio Dole, EC', '24-0140', 843.92, 1.5517),
+    ('240502', 'Banāni Mini, 12gab., CR', '24-0140', 144, 1.7179),
+    ('240502', 'Banāni Bio Banderole, EC', '24-0140', 1000.0, 1.5517)
+GO
+
+INSERT INTO Pasutijumi(PasutijumaNr, KomplektesanasDatums, KomplektetajaID, KlientaID, NoliktavasID)
+    VALUES
+    ('24-0168', '2024-02-08', 1012, 'topp02', 3)
+GO
+
+INSERT INTO ProduktiPasutijuma 
+	(ProduktaSerija, ProduktaNosaukums, PasutijumaNumurs, DaudzumsKg, PardosanasCenaKg)
+VALUES
+	('240502', 'Banāni Mini, 12gab., CR', '24-0168', 984, 1.3512)
+GO
+
+INSERT INTO Pasutijumi(PasutijumaNr, KomplektesanasDatums, KomplektetajaID, KlientaID, NoliktavasID)
+    VALUES
+    ('24-0169', '2024-04-02', 1014, 'srio03', 3),
+    ('24-0170', '2024-04-02', 1014, 'srit99', 3),
+    ('24-0171', '2024-04-02', 1013, 'srit99', 3)
+GO
+
+--1302/01 56-61 & 69-71
+INSERT INTO ProduktiPasutijuma (ProduktaSerija, ProduktaNosaukums, PasutijumaNumurs, DaudzumsKg, PardosanasCenaKg)
+    VALUES
+    ('241301', 'Banāni negatavi, CO', '24-0156', 8707.2, 1.1501),
+    ('241302', 'Banāni Bio Dole, EC', '24-0156', 870.2, 1.5517),
+    ('241302', 'Banāni Red, EC', '24-0156', 120, 1.5001),
+    ('241302', 'Banāni Mini, 12gab., CR', '24-0156', 60, 1.7179),
+    ('241302', 'Banāni Bio Banderole, EC', '24-0156', 870.2, 1.5517),
+
+    ('241301', 'Banāni negatavi, CO', '24-0157', 6095.04, 1.1501),
+    ('241302', 'Banāni Bio Dole, EC', '24-0157', 1306.08, 1.5517),
+    ('241302', 'Banāni Red, EC', '24-0157', 136, 1.5001),
+    ('241302', 'Banāni Mini, 12gab., CR', '24-0157', 96, 1.7179),
+    ('241302', 'Banāni Bio Banderole, EC', '24-0157', 435.36, 1.5517),
+
+	('241302', 'Banāni Bio Dole, EC', '24-0158', 1306.08, 1.5517),
+    ('241302', 'Banāni Red, EC', '24-0158', 136, 1.5001),
+    ('241302', 'Banāni Mini, 12gab., CR', '24-0158', 96, 1.7179),
+    ('241302', 'Banāni Bio Banderole, EC', '24-0158', 435.36, 1.5517),
+
+	('241302', 'Banāni Bio Banderole, EC', '24-0159', 2401.64, 1.653),
+	('241302', 'Banāni Mini, 12gab., CR', '24-0159', 108, 1.7325),
+	('241302', 'Banāni Red, EC', '24-0159', 512.0, 1.653),
+
+	('241302', 'Banāni Bio Dole, EC', '24-0160', 2619.32, 1.683),
+	('241302', 'Banāni Mini, 12gab., CR', '24-0160', 216, 1.7325),
+	('241302', 'Banāni Red, EC', '24-0160', 376.0, 1.653),
+
+	('241302', 'Banāni Bio Banderole, EC', '24-0161', 1250, 1.653),
+	('241302', 'Banāni Bio Dole, EC', '24-0161', 1250, 1.653),
+
+	('241301', 'Banāni negatavi, CO', '24-0169', 3095.04, 1.1501),
+    ('241302', 'Banāni Bio Dole, EC', '24-0169', 800.0, 1.5517),
+    ('241302', 'Banāni Mini, 12gab., CR', '24-0169', 96, 1.7179),
+    ('241302', 'Banāni Bio Banderole, EC', '24-0169', 1314.64, 1.5517),
+
+    ('241301', 'Banāni negatavi, CO', '24-0170', 3000.0, 1.1501),
+    ('241302', 'Banāni Bio Dole, EC', '24-0170', 800.0, 1.5517),
+    ('241302', 'Banāni Mini, 12gab., CR', '24-0170', 120, 1.7179),
+    ('241302', 'Banāni Bio Banderole, EC', '24-0170', 1000.0, 1.5517),
+
+	('241302', 'Banāni Bio Dole, EC', '24-0171', 843.92, 1.5517),
+    ('241302', 'Banāni Mini, 12gab., CR', '24-0171', 144, 1.7179),
+    ('241302', 'Banāni Bio Banderole, EC', '24-0171', 1000.0, 1.5517)
+GO
+
+--1402/01 62-67
+INSERT INTO ProduktiPasutijuma (ProduktaSerija, ProduktaNosaukums, PasutijumaNumurs, DaudzumsKg, PardosanasCenaKg)
+    VALUES
+    ('241401', 'Banāni negatavi, CO', '24-0162', 8707.2, 1.1501),
+    ('241402', 'Banāni Bio Dole, EC', '24-0162', 870.2, 1.5517),
+    ('241402', 'Banāni Red, EC', '24-0162', 120, 1.5001),
+    ('241402', 'Banāni Mini, 12gab., CR', '24-0162', 60, 1.7179),
+    ('241402', 'Banāni Bio Banderole, EC', '24-0162', 870.2, 1.5517),
+	('241302', 'Banāni Mini, 12gab., CR', '24-0162', 328, 1.3102),
+
+    ('241401', 'Banāni negatavi, CO', '24-0163', 6095.04, 1.1501),
+    ('241402', 'Banāni Bio Dole, EC', '24-0163', 1306.08, 1.5517),
+    ('241402', 'Banāni Red, EC', '24-0163', 136, 1.5001),
+    ('241402', 'Banāni Mini, 12gab., CR', '24-0163', 96, 1.7179),
+    ('241402', 'Banāni Bio Banderole, EC', '24-0163', 435.36, 1.5517),
+	('241302', 'Banāni Mini, 12gab., CR', '24-0163', 328, 1.3102),
+
+	('241402', 'Banāni Bio Dole, EC', '24-0164', 1306.08, 1.5517),
+    ('241402', 'Banāni Red, EC', '24-0164', 136, 1.5001),
+    ('241402', 'Banāni Mini, 12gab., CR', '24-0164', 96, 1.7179),
+    ('241402', 'Banāni Bio Banderole, EC', '24-0164', 435.36, 1.5517),
+	('241302', 'Banāni Mini, 12gab., CR', '24-0164', 328, 1.3102),
+
+	('241402', 'Banāni Bio Banderole, EC', '24-0165', 2401.64, 1.653),
+	('241402', 'Banāni Mini, 12gab., CR', '24-0165', 108, 1.7325),
+	('241402', 'Banāni Red, EC', '24-0165', 512.0, 1.653),
+
+	('241402', 'Banāni Bio Dole, EC', '24-0166', 2619.32, 1.683),
+	('241402', 'Banāni Mini, 12gab., CR', '24-0166', 216, 1.7325),
+	('241402', 'Banāni Red, EC', '24-0166', 376.0, 1.653),
+
+	('241402', 'Banāni Bio Banderole, EC', '24-0167', 1250, 1.653),
+	('241402', 'Banāni Bio Dole, EC', '24-0167', 1250, 1.653)
 GO

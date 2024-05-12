@@ -1,4 +1,4 @@
-        -- Tabulu izveido≈°ana
+        -- Tabulu izveidoana
 
     --Darbinieki un Noliktavas
 
@@ -27,9 +27,9 @@ FOREIGN KEY (Darbavieta) REFERENCES
 Noliktavas(Numurs)
 GO
 
-    -- PiegƒÅdƒÅtƒÅji un PiegƒÅdes
+    -- Pieg‚d‚t‚ji un Pieg‚des
 
--- PiegƒÅdƒÅtƒÅji
+-- Pieg‚d‚t‚ji
 CREATE TABLE Piegadataji(
     ID VARCHAR(6) NOT NULL PRIMARY KEY,
     Nosaukums NVARCHAR(100),
@@ -38,14 +38,14 @@ CREATE TABLE Piegadataji(
     RegistracijasNr VARCHAR(15)
 )
 GO
--- PiegƒÅdes
+-- Pieg‚des
 CREATE TABLE Piegades(
     RekinaNr VARCHAR(10) NOT NULL PRIMARY KEY,
     PiegadesDatums DATE,
     PiegadatajaID VARCHAR(6) FOREIGN KEY REFERENCES Piegadataji(ID)
 )
 
-    -- Klienti, to Adreses un Pas≈´tƒ´jumi
+    -- Klienti, to Adreses un Pas˚tÓjumi
 
 -- Klienti
 CREATE TABLE Klienti(
@@ -65,7 +65,7 @@ CREATE TABLE KlientuAdreses(
         FOREIGN KEY REFERENCES Klienti(ID)  
 )
 GO
--- Pas≈´tƒ´jumi
+-- Pas˚tÓjumi
 CREATE TABLE Pasutijumi(
     PasutijumaNr VARCHAR(7) NOT NULL PRIMARY KEY,
     KomplektesanasDatums DATE,
@@ -78,7 +78,7 @@ CREATE TABLE Pasutijumi(
 )
 GO
 
-    -- Produktu Atlikums, Sadalƒ´jums pa NoliktavƒÅm un Pas≈´tƒ´jumiem, RezervƒÅcijas
+    -- Produktu Atlikums, SadalÓjums pa Noliktav‚m un Pas˚tÓjumiem, Rezerv‚cijas
 
 -- Produktu atlikums
 CREATE TABLE ProduktuAtlikums(
@@ -89,14 +89,10 @@ CREATE TABLE ProduktuAtlikums(
     RekinaNr VARCHAR(10) NOT NULL 
         FOREIGN KEY REFERENCES Piegades(RekinaNr),
     PiegadataisDaudzumsKg DECIMAL(8,3) NOT NULL,
-    IepirkumaCenaKg SMALLMONEY NOT NULL,
-    -- Pa≈°izmaksa
-    -- 10%Cena
-    -- 20%Cena
-    -- 50%Cena
+    IepirkumaCenaKg SMALLMONEY NOT NULL
 )
 GO
--- Produktu Sadalƒ´jums
+-- Produktu SadalÓjums
 CREATE TABLE ProduktuSadalijums(
     NoliktavasNumurs TINYINT NOT NULL 
         FOREIGN KEY REFERENCES Noliktavas(Numurs),
@@ -107,7 +103,69 @@ CREATE TABLE ProduktuSadalijums(
     PiegadataisAtlikumsKg DECIMAL(8,3)
 )
 GO
--- Funkcija  teko≈°ƒÅ atlikuma aprƒìƒ∑inam 
+
+-- Produkti Pas˚tÓjum‚
+CREATE TABLE ProduktiPasutijuma(
+    ProduktaSerija VARCHAR(7) NOT NULL,
+    ProduktaNosaukums NVARCHAR(100) NOT NULL,
+    FOREIGN KEY(ProduktaSerija,ProduktaNosaukums) 
+        REFERENCES ProduktuAtlikums(Serija,Nosaukums),
+    PasutijumaNumurs VARCHAR(7) NOT NULL
+        FOREIGN KEY REFERENCES Pasutijumi(PasutijumaNr),
+    DaudzumsKg DECIMAL(8,3),
+    PardosanasCenaKg SMALLMONEY
+)
+GO
+-- Rezerv‚cijas
+CREATE TABLE Rezervacijas(
+    DarbiniekaID SMALLINT NOT NULL
+    FOREIGN KEY REFERENCES Darbinieki(ID),
+    ProduktaSerija VARCHAR(7) NOT NULL,
+    ProduktaNosaukums NVARCHAR(100) NOT NULL,
+    FOREIGN KEY(ProduktaSerija,ProduktaNosaukums) 
+        REFERENCES ProduktuAtlikums(Serija,Nosaukums),
+    RezervetiKg DECIMAL(8,3),
+	NoliktavasID TINYINT
+)
+GO
+Alter table Rezervacijas Add
+Foreign Key ( NoliktavasID)
+References Noliktavas(Numurs)
+
+    -- Produktu Grupu tabulas
+
+-- Visp‚rÓg‚s Produktu Grupas
+CREATE TABLE VisparigasProduktuGrupas(
+    Kods CHAR(5) NOT NULL PRIMARY KEY,
+    Nosaukums NVARCHAR(20)
+)
+GO
+
+-- Liel‚s Produktu Grupas
+CREATE TABLE LielasProduktuGrupas(
+    Kods CHAR(5) NOT NULL PRIMARY KEY,
+    Nosaukums NVARCHAR(20),
+    VisparigasProduktuGrupasID CHAR(5)
+        FOREIGN KEY REFERENCES VisparigasProduktuGrupas(Kods) 
+)
+GO
+
+-- –kirnes (jeb Maz‚s produktu grupas)
+CREATE TABLE Skirnes(
+    Kods CHAR(5) NOT NULL PRIMARY KEY,
+    Nosaukums NVARCHAR(20),
+    LielasProduktuGrupasID CHAR(5)
+        FOREIGN KEY REFERENCES LielasProduktuGrupas(Kods)
+)
+GO
+
+-- Foreign Key no ProduktuAtlikums uz Skirnes
+ALTER TABLE ProduktuAtlikums ADD
+    FOREIGN KEY (SkirnesID) 
+        REFERENCES Skirnes(Kods)
+GO
+
+-- Funkcija  teko‚ atlikuma aprÁÌinam 
 CREATE FUNCTION dbo.AtlikumaAprekins (
     @NoliktavasNumurs TINYINT,
     @ProduktaSerija VARCHAR(7),
@@ -118,12 +176,12 @@ AS
 BEGIN
     DECLARE @Atlikums DECIMAL(8,3);
     SELECT @Atlikums = ISNULL(
-        -- Ieg≈´st daudzumu kur≈° tika piegƒÅdƒÅts uz noliktavu
+        -- Ieg˚st daudzumu kur tika pieg‚d‚ts uz noliktavu
         (SELECT PiegadataisAtlikumsKg FROM ProduktuSadalijums 
         WHERE ProduktaSerija = @ProduktaSerija 
         AND ProduktaNosaukums = @ProduktaNosaukums), 0
     ) - ISNULL(
-        -- saskaita visus atbilsto≈°ƒÅ produkta pƒÅrdotos daudzums atbilsto≈°ajƒÅ noliktavƒÅ
+        -- saskaita visus atbilsto‚ produkta p‚rdotos daudzums atbilstoaj‚ noliktav‚
         (SELECT SUM(PP.DaudzumsKg)
         FROM ProduktiPasutijuma PP
         INNER JOIN Pasutijumi P ON PP.PasutijumaNumurs = P.PasutijumaNr
@@ -138,61 +196,4 @@ END
 GO
 ALTER TABLE ProduktuSadalijums
 ADD Atlikums AS dbo.AtlikumaAprekins( NoliktavasNumurs, ProduktaSerija, ProduktaNosaukums)
-GO
--- Produkti Pas≈´tƒ´jumƒÅ
-CREATE TABLE ProduktiPasutijuma(
-    ProduktaSerija VARCHAR(7) NOT NULL,
-    ProduktaNosaukums NVARCHAR(100) NOT NULL,
-    FOREIGN KEY(ProduktaSerija,ProduktaNosaukums) 
-        REFERENCES ProduktuAtlikums(Serija,Nosaukums),
-    PasutijumaNumurs VARCHAR(7) NOT NULL
-        FOREIGN KEY REFERENCES Pasutijumi(PasutijumaNr),
-    DaudzumsKg DECIMAL(8,3),
-    PardosanasCenaKg SMALLMONEY,
-)
-GO
--- RezervƒÅcijas
-CREATE TABLE Rezervacijas(
-    DarbiniekaID SMALLINT NOT NULL
-    FOREIGN KEY REFERENCES Darbinieki(ID),
-    ProduktaSerija VARCHAR(7) NOT NULL,
-    ProduktaNosaukums NVARCHAR(100) NOT NULL,
-    FOREIGN KEY(ProduktaSerija,ProduktaNosaukums) 
-        REFERENCES ProduktuAtlikums(Serija,Nosaukums),
-    RezervetiKg DECIMAL(8,3)
-)
-GO
-alter TABLE Rezervacijas
-add NoliktavasID TINYINT;
-    -- Produktu Grupu tabulas
-
--- VispƒÅrƒ´gƒÅs Produktu Grupas
-CREATE TABLE VisparigasProduktuGrupas(
-    Kods CHAR(5) NOT NULL PRIMARY KEY,
-    Nosaukums NVARCHAR(20)
-)
-GO
-
--- LielƒÅs Produktu Grupas
-CREATE TABLE LielasProduktuGrupas(
-    Kods CHAR(5) NOT NULL PRIMARY KEY,
-    Nosaukums NVARCHAR(20),
-    VisparigasProduktuGrupasID CHAR(5)
-        FOREIGN KEY REFERENCES VisparigasProduktuGrupas(Kods) 
-)
-GO
-
--- ≈†kirnes (jeb MazƒÅs produktu grupas)
-CREATE TABLE Skirnes(
-    Kods CHAR(5) NOT NULL PRIMARY KEY,
-    Nosaukums NVARCHAR(20),
-    LielasProduktuGrupasID CHAR(5)
-        FOREIGN KEY REFERENCES LielasProduktuGrupas(Kods)
-)
-GO
-
--- Foreign Key no ProduktuAtlikums uz Skirnes
-ALTER TABLE ProduktuAtlikums ADD
-    FOREIGN KEY (SkirnesID) 
-        REFERENCES Skirnes(Kods)
 GO
