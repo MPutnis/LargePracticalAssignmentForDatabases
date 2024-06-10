@@ -311,7 +311,7 @@ Select
 		ON
 			p.KlientaID = k.ID
 	Where
-		pp.ProduktaSerija = '240502' and pp.ProduktaNosaukums = 'Ban�ni Mini, 12gab., CR' 
+		pp.ProduktaSerija = '240502' and pp.ProduktaNosaukums = 'Banāni Mini, 12gab., CR' 
 	order by p.KomplektesanasDatums
 Go
 

@@ -182,7 +182,8 @@ BEGIN
         -- Iegūst daudzumu kurš tika piegādāts uz noliktavu
         (SELECT PiegadataisAtlikumsKg FROM ProduktuSadalijums 
         WHERE ProduktaSerija = @ProduktaSerija 
-        AND ProduktaNosaukums = @ProduktaNosaukums), 0
+        AND ProduktaNosaukums = @ProduktaNosaukums
+		AND NoliktavasNumurs = @NoliktavasNumurs), 0
     ) - ISNULL(
         -- saskaita visus atbilstošā produkta pārdotos daudzums atbilstošajā noliktavā
         (SELECT SUM(PP.DaudzumsKg)
@@ -197,6 +198,7 @@ BEGIN
     RETURN @Atlikums;
 END
 GO
+
 ALTER TABLE ProduktuSadalijums
 ADD Atlikums AS dbo.AtlikumaAprekins( NoliktavasNumurs, ProduktaSerija, ProduktaNosaukums)
 GO
