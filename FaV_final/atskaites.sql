@@ -1,10 +1,10 @@
--- Tekoğie atlikumi + Rezervâcijas  (tekoğie atlikumi- produkti kuru atlikums != 0)
-    -- ProduktuSadalijums + Rezervacijas + Darbinieki(Menedşeri) kâ kolonnu nosaukumi
-	-- ğobrîd ar atlikumiem kaut kas notiek tikai 3. Noliktavâ, tâpçc Atlikumi_1 un Atlikumi_2 ir tukği
-		/* komentârs par to, kâpçc nekas nav rezervçts:
-			reâlajâ datubâzç, uz kuru ğî datubaze ir balstîta, ğî opcija ne reizi netika izmantota.
-			Vismaz ne tajos piecos gados cik man nâcâs ar to saskarties, lîdz ar to atstâju ğo
-			kâ piemçru funkcionalitâtei, kuru nevienam nevajag.
+-- TekoÅ¡ie atlikumi + RezervÄcijas  (tekoÅ¡ie atlikumi- produkti kuru atlikums != 0)
+    -- ProduktuSadalijums + Rezervacijas + Darbinieki(MenedÅ¾eri) kÄ kolonnu nosaukumi
+	-- Å¡obrÄ«d ar atlikumiem kaut kas notiek tikai 3. NoliktavÄ, tÄpÄ“c Atlikumi_1 un Atlikumi_2 ir tukÅ¡i
+		/* komentÄrs par to, kÄpÄ“c nekas nav rezervÄ“ts:
+			reÄlajÄ datubÄzÄ“, uz kuru Å¡Ä« datubaze ir balstÄ«ta, Å¡Ä« opcija ne reizi netika izmantota.
+			Vismaz ne tajos piecos gados cik man nÄcÄs ar to saskarties, lÄ«dz ar to atstÄju Å¡o
+			kÄ piemÄ“ru funkcionalitÄtei, kuru nevienam nevajag.
 		*/
 CREATE VIEW Atlikumi as
 select 
@@ -12,23 +12,23 @@ select
     PS.ProduktaNosaukums, 
     Atlikums,
     isnull(
-        cast( -- ja menedşera rezervâciju summa produktam ir 0, tad atgrieş NULL, kurğ tiek pârvçrsts par tukğumu
+        cast( -- ja menedÅ¾era rezervÄciju summa produktam ir 0, tad atgrieÅ¾ NULL, kurÅ¡ tiek parvÄ“rsts par tukÅ¡umu
             CASE WHEN SUM(CASE WHEN R.DarbiniekaID = 1000 THEN R.RezervetiKg ELSE 0 END) = 0 THEN null ELSE SUM(CASE WHEN R.DarbiniekaID = 1000 THEN R.RezervetiKg ELSE 0 END) END 
         as nvarchar(max)), '') AS Arturs,
     isnull(
-        cast( -- ja menedşera rezervâciju summa produktam ir 0, tad atgrieş NULL, kurğ tiek pârvçrsts par tukğumu
+        cast( -- ja menedÅ¾era rezervÄciju summa produktam ir 0, tad atgrieÅ¾ NULL, kurÅ¡ tiek parvÄ“rsts par tukÅ¡umu
             CASE WHEN SUM(CASE WHEN R.DarbiniekaID = 1001 THEN R.RezervetiKg ELSE 0 END) = 0 THEN null ELSE SUM(CASE WHEN R.DarbiniekaID = 1001 THEN R.RezervetiKg ELSE 0 END) END 
         as nvarchar(max)), '') AS Juris,
     isnull(
-        cast( -- ja menedşera rezervâciju summa produktam ir 0, tad atgrieş NULL, kurğ tiek pârvçrsts par tukğumu
+        cast( -- ja menedÅ¾era rezervÄciju summa produktam ir 0, tad atgrieÅ¾ NULL, kurÅ¡ tiek parvÄ“rsts par tukÅ¡umu
             CASE WHEN SUM(CASE WHEN R.DarbiniekaID = 1002 THEN R.RezervetiKg ELSE 0 END) = 0 THEN null ELSE SUM(CASE WHEN R.DarbiniekaID = 1002 THEN R.RezervetiKg ELSE 0 END) END 
         as nvarchar(max)), '') AS Laima,    
     isnull(
-        cast( -- ja menedşera rezervâciju summa produktam ir 0, tad atgrieş NULL, kurğ tiek pârvçrsts par tukğumu
+        cast( -- ja menedÅ¾era rezervÄciju summa produktam ir 0, tad atgrieÅ¾ NULL, kurÅ¡ tiek parvÄ“rsts par tukÅ¡umu
             CASE WHEN SUM(CASE WHEN R.DarbiniekaID = 1003 THEN R.RezervetiKg ELSE 0 END) = 0 THEN null ELSE SUM(CASE WHEN R.DarbiniekaID = 1003 THEN R.RezervetiKg ELSE 0 END) END 
         as nvarchar(max)), '') AS Andris,    
     isnull(
-        cast( -- ja menedşera rezervâciju summa produktam ir 0, tad atgrieş NULL, kurğ tiek pârvçrsts par tukğumu
+        cast( -- ja menedÅ¾era rezervÄciju summa produktam ir 0, tad atgrieÅ¾ NULL, kurÅ¡ tiek parvÄ“rsts par tukÅ¡umu
             CASE WHEN SUM(CASE WHEN R.DarbiniekaID = 1004 THEN R.RezervetiKg ELSE 0 END) = 0 THEN null ELSE SUM(CASE WHEN R.DarbiniekaID = 1004 THEN R.RezervetiKg ELSE 0 END) END 
         as nvarchar(max)), '') AS Maija
     from ProduktuSadalijums PS
@@ -41,30 +41,31 @@ select
         PS.ProduktaNosaukums, 
         Atlikums
 go
-select * from Atlikumi;
+select * from Atlikumi
+go
 CREATE VIEW Atlikumi_1 as
 select 
     PS.ProduktaSerija, 
     PS.ProduktaNosaukums, 
     Atlikums,
     isnull(
-        cast( -- ja menedşera rezervâciju summa produktam ir 0, tad atgrieş NULL, kurğ tiek pârvçrsts par tukğumu
+        cast( -- ja menedÅ¾era rezervÄciju summa produktam ir 0, tad atgrieÅ¾ NULL, kurÅ¡ tiek parvÄ“rsts par tukÅ¡umu
             CASE WHEN SUM(CASE WHEN R.DarbiniekaID = 1000 THEN R.RezervetiKg ELSE 0 END) = 0 THEN null ELSE SUM(CASE WHEN R.DarbiniekaID = 1000 THEN R.RezervetiKg ELSE 0 END) END 
         as nvarchar(max)), '') AS Arturs,
     isnull(
-        cast( -- ja menedşera rezervâciju summa produktam ir 0, tad atgrieş NULL, kurğ tiek pârvçrsts par tukğumu
+        cast( -- ja menedÅ¾era rezervÄciju summa produktam ir 0, tad atgrieÅ¾ NULL, kurÅ¡ tiek parvÄ“rsts par tukÅ¡umu
             CASE WHEN SUM(CASE WHEN R.DarbiniekaID = 1001 THEN R.RezervetiKg ELSE 0 END) = 0 THEN null ELSE SUM(CASE WHEN R.DarbiniekaID = 1001 THEN R.RezervetiKg ELSE 0 END) END 
         as nvarchar(max)), '') AS Juris,
     isnull(
-        cast( -- ja menedşera rezervâciju summa produktam ir 0, tad atgrieş NULL, kurğ tiek pârvçrsts par tukğumu
+        cast( -- ja menedÅ¾era rezervÄciju summa produktam ir 0, tad atgrieÅ¾ NULL, kurÅ¡ tiek parvÄ“rsts par tukÅ¡umu
             CASE WHEN SUM(CASE WHEN R.DarbiniekaID = 1002 THEN R.RezervetiKg ELSE 0 END) = 0 THEN null ELSE SUM(CASE WHEN R.DarbiniekaID = 1002 THEN R.RezervetiKg ELSE 0 END) END 
         as nvarchar(max)), '') AS Laima,    
     isnull(
-        cast( -- ja menedşera rezervâciju summa produktam ir 0, tad atgrieş NULL, kurğ tiek pârvçrsts par tukğumu
+        cast( -- ja menedÅ¾era rezervÄciju summa produktam ir 0, tad atgrieÅ¾ NULL, kurÅ¡ tiek parvÄ“rsts par tukÅ¡umu
             CASE WHEN SUM(CASE WHEN R.DarbiniekaID = 1003 THEN R.RezervetiKg ELSE 0 END) = 0 THEN null ELSE SUM(CASE WHEN R.DarbiniekaID = 1003 THEN R.RezervetiKg ELSE 0 END) END 
         as nvarchar(max)), '') AS Andris,    
     isnull(
-        cast( -- ja menedşera rezervâciju summa produktam ir 0, tad atgrieş NULL, kurğ tiek pârvçrsts par tukğumu
+        cast( -- ja menedÅ¾era rezervÄciju summa produktam ir 0, tad atgrieÅ¾ NULL, kurÅ¡ tiek parvÄ“rsts par tukÅ¡umu
             CASE WHEN SUM(CASE WHEN R.DarbiniekaID = 1004 THEN R.RezervetiKg ELSE 0 END) = 0 THEN null ELSE SUM(CASE WHEN R.DarbiniekaID = 1004 THEN R.RezervetiKg ELSE 0 END) END 
         as nvarchar(max)), '') AS Maija
     from ProduktuSadalijums PS
@@ -77,30 +78,31 @@ select
         PS.ProduktaNosaukums, 
         Atlikums
 go
-select * from Atlikumi_1;
+select * from Atlikumi_1
+go
 CREATE VIEW Atlikumi_2 as
 select 
     PS.ProduktaSerija, 
     PS.ProduktaNosaukums, 
     Atlikums,
     isnull(
-        cast( -- ja menedşera rezervâciju summa produktam ir 0, tad atgrieş NULL, kurğ tiek pârvçrsts par tukğumu
+        cast( -- ja menedÅ¾era rezervÄciju summa produktam ir 0, tad atgrieÅ¾ NULL, kurÅ¡ tiek parvÄ“rsts par tukÅ¡umu
             CASE WHEN SUM(CASE WHEN R.DarbiniekaID = 1000 THEN R.RezervetiKg ELSE 0 END) = 0 THEN null ELSE SUM(CASE WHEN R.DarbiniekaID = 1000 THEN R.RezervetiKg ELSE 0 END) END 
         as nvarchar(max)), '') AS Arturs,
     isnull(
-        cast( -- ja menedşera rezervâciju summa produktam ir 0, tad atgrieş NULL, kurğ tiek pârvçrsts par tukğumu
+        cast( -- ja menedÅ¾era rezervÄciju summa produktam ir 0, tad atgrieÅ¾ NULL, kurÅ¡ tiek parvÄ“rsts par tukÅ¡umu
             CASE WHEN SUM(CASE WHEN R.DarbiniekaID = 1001 THEN R.RezervetiKg ELSE 0 END) = 0 THEN null ELSE SUM(CASE WHEN R.DarbiniekaID = 1001 THEN R.RezervetiKg ELSE 0 END) END 
         as nvarchar(max)), '') AS Juris,
     isnull(
-        cast( -- ja menedşera rezervâciju summa produktam ir 0, tad atgrieş NULL, kurğ tiek pârvçrsts par tukğumu
+        cast( -- ja menedÅ¾era rezervÄciju summa produktam ir 0, tad atgrieÅ¾ NULL, kurÅ¡ tiek parvÄ“rsts par tukÅ¡umu
             CASE WHEN SUM(CASE WHEN R.DarbiniekaID = 1002 THEN R.RezervetiKg ELSE 0 END) = 0 THEN null ELSE SUM(CASE WHEN R.DarbiniekaID = 1002 THEN R.RezervetiKg ELSE 0 END) END 
         as nvarchar(max)), '') AS Laima,    
     isnull(
-        cast( -- ja menedşera rezervâciju summa produktam ir 0, tad atgrieş NULL, kurğ tiek pârvçrsts par tukğumu
+        cast( -- ja menedÅ¾era rezervÄciju summa produktam ir 0, tad atgrieÅ¾ NULL, kurÅ¡ tiek parvÄ“rsts par tukÅ¡umu
             CASE WHEN SUM(CASE WHEN R.DarbiniekaID = 1003 THEN R.RezervetiKg ELSE 0 END) = 0 THEN null ELSE SUM(CASE WHEN R.DarbiniekaID = 1003 THEN R.RezervetiKg ELSE 0 END) END 
         as nvarchar(max)), '') AS Andris,    
     isnull(
-        cast( -- ja menedşera rezervâciju summa produktam ir 0, tad atgrieş NULL, kurğ tiek pârvçrsts par tukğumu
+        cast( -- ja menedÅ¾era rezervÄciju summa produktam ir 0, tad atgrieÅ¾ NULL, kurÅ¡ tiek parvÄ“rsts par tukÅ¡umu
             CASE WHEN SUM(CASE WHEN R.DarbiniekaID = 1004 THEN R.RezervetiKg ELSE 0 END) = 0 THEN null ELSE SUM(CASE WHEN R.DarbiniekaID = 1004 THEN R.RezervetiKg ELSE 0 END) END 
         as nvarchar(max)), '') AS Maija
     from ProduktuSadalijums PS
@@ -113,30 +115,31 @@ select
         PS.ProduktaNosaukums, 
         Atlikums
 go
-select * from Atlikumi_2;
+select * from Atlikumi_2
+go
 CREATE VIEW Atlikumi_3 as
 select 
     PS.ProduktaSerija, 
     PS.ProduktaNosaukums, 
     Atlikums,
     isnull(
-        cast( -- ja menedşera rezervâciju summa produktam ir 0, tad atgrieş NULL, kurğ tiek pârvçrsts par tukğumu
+        cast( -- ja menedÅ¾era rezervÄciju summa produktam ir 0, tad atgrieÅ¾ NULL, kurÅ¡ tiek parvÄ“rsts par tukÅ¡umu
             CASE WHEN SUM(CASE WHEN R.DarbiniekaID = 1000 THEN R.RezervetiKg ELSE 0 END) = 0 THEN null ELSE SUM(CASE WHEN R.DarbiniekaID = 1000 THEN R.RezervetiKg ELSE 0 END) END 
         as nvarchar(max)), '') AS Arturs,
     isnull(
-        cast( -- ja menedşera rezervâciju summa produktam ir 0, tad atgrieş NULL, kurğ tiek pârvçrsts par tukğumu
+        cast( -- ja menedÅ¾era rezervÄciju summa produktam ir 0, tad atgrieÅ¾ NULL, kurÅ¡ tiek parvÄ“rsts par tukÅ¡umu
             CASE WHEN SUM(CASE WHEN R.DarbiniekaID = 1001 THEN R.RezervetiKg ELSE 0 END) = 0 THEN null ELSE SUM(CASE WHEN R.DarbiniekaID = 1001 THEN R.RezervetiKg ELSE 0 END) END 
         as nvarchar(max)), '') AS Juris,
     isnull(
-        cast( -- ja menedşera rezervâciju summa produktam ir 0, tad atgrieş NULL, kurğ tiek pârvçrsts par tukğumu
+        cast( -- ja menedÅ¾era rezervÄciju summa produktam ir 0, tad atgrieÅ¾ NULL, kurÅ¡ tiek parvÄ“rsts par tukÅ¡umu
             CASE WHEN SUM(CASE WHEN R.DarbiniekaID = 1002 THEN R.RezervetiKg ELSE 0 END) = 0 THEN null ELSE SUM(CASE WHEN R.DarbiniekaID = 1002 THEN R.RezervetiKg ELSE 0 END) END 
         as nvarchar(max)), '') AS Laima,    
     isnull(
-        cast( -- ja menedşera rezervâciju summa produktam ir 0, tad atgrieş NULL, kurğ tiek pârvçrsts par tukğumu
+        cast( -- ja menedÅ¾era rezervÄciju summa produktam ir 0, tad atgrieÅ¾ NULL, kurÅ¡ tiek parvÄ“rsts par tukÅ¡umu
             CASE WHEN SUM(CASE WHEN R.DarbiniekaID = 1003 THEN R.RezervetiKg ELSE 0 END) = 0 THEN null ELSE SUM(CASE WHEN R.DarbiniekaID = 1003 THEN R.RezervetiKg ELSE 0 END) END 
         as nvarchar(max)), '') AS Andris,    
     isnull(
-        cast( -- ja menedşera rezervâciju summa produktam ir 0, tad atgrieş NULL, kurğ tiek pârvçrsts par tukğumu
+        cast( -- ja menedÅ¾era rezervÄciju summa produktam ir 0, tad atgrieÅ¾ NULL, kurÅ¡ tiek parvÄ“rsts par tukÅ¡umu
             CASE WHEN SUM(CASE WHEN R.DarbiniekaID = 1004 THEN R.RezervetiKg ELSE 0 END) = 0 THEN null ELSE SUM(CASE WHEN R.DarbiniekaID = 1004 THEN R.RezervetiKg ELSE 0 END) END 
         as nvarchar(max)), '') AS Maija
     from ProduktuSadalijums PS
@@ -149,10 +152,11 @@ select
         PS.ProduktaNosaukums, 
         Atlikums
 go
-select * from Atlikumi_3;
+select * from Atlikumi_3
+go
 
--- Tekoğie atlikumi + Uzcenojums
-	-- ğobrîd ar atlikumiem kaut kas notiek tikai 3. Noliktavâ, tâpçc CenuLapa_1 un CenuLapa_2 ir tukğas
+-- TekoÅ¡ie atlikumi + Uzcenojums
+	-- Å¡obrÄ«d ar atlikumiem kaut kas notiek tikai 3. NoliktavÄ, tÄpÄ“c CenuLapa_1 un CenuLapa_2 ir tukÅ¡as
 create view CenuLapa as
 select 
 	PS.ProduktaSerija, 
@@ -174,7 +178,8 @@ select
         PS.Atlikums,
         PA.IepirkumaCenaKg
 go
-Select * From CenuLapa;
+Select * From CenuLapa
+go
 create view CenuLapa_1 as
 select 
 	PS.ProduktaSerija, 
@@ -196,7 +201,8 @@ select
         PS.Atlikums,
         PA.IepirkumaCenaKg
 go
-Select * From CenuLapa_1;
+Select * From CenuLapa_1
+go
 
 create view CenuLapa_2 as
 select 
@@ -219,7 +225,8 @@ select
         PS.Atlikums,
         PA.IepirkumaCenaKg
 go
-Select * From CenuLapa_2;
+Select * From CenuLapa_2
+go
 
 create view CenuLapa_3 as
 select 
@@ -246,14 +253,14 @@ go
 
 
 Select * From CenuLapa_3;
-Select * From Atlikumi_3;
--- Produktu kategorijas pârdotais daudzums pa ceturkğòiem
-    -- pasûtîjumu datumi + ProduktiPasutijuma sum(daudzumi) un nosaukums + ProduktuAtlikumi ğíirne
+
+-- Produktu kategorijas pÄrdotais daudzums pa ceturkÅ¡Å†iem
+    -- pasÅ«tÄ«jumu datumi + ProduktiPasutijuma sum(daudzumi) un nosaukums + ProduktuAtlikumi Å¡Ä·irne
 Select 
 	distinct PA.SkirnesID,
-	YEAR(P.KomplektesanasDatums) AS PasutijumaGads, -- kurâ gadâ ir ceturksnis
-	(DATEPART(mm, P.KomplektesanasDatums)-1) / 3 + 1 AS PasutijumaCeturksnis, -- ceturkğòa aprçíins
-	SUM( PP.DaudzumsKg) OVER ( -- pârdotais apjoms ceturksnî
+	YEAR(P.KomplektesanasDatums) AS PasutijumaGads, -- kurÄ gadÄ ir ceturksnis
+	(DATEPART(mm, P.KomplektesanasDatums)-1) / 3 + 1 AS PasutijumaCeturksnis, -- ceturkÅ¡Å†a aprÄ“Ä·ins
+	SUM( PP.DaudzumsKg) OVER ( -- pÄrdotais apjoms ceturksnÄ«
 		Partition By 
 			PA.SkirnesID, 
 			YEAR(P.KomplektesanasDatums),
@@ -268,7 +275,7 @@ Select
     --WHERE PA.SkirnesID = 'cav01'
 go
 
--- Piegâdâtie produktu kategorijas apjomi pa ceturkğòiem
+-- PiegÄdÄtie produktu kategorijas apjomi pa ceturkÅ¡Å†iem
     -- Piegades PiegadesDatums + ProduktuAtlikums Skirne & PiegadataisDaudzums
 SELECT
 	DISTINCT SkirnesID,
@@ -287,7 +294,7 @@ SELECT
     --WHERE PA.SkirnesID = 'cav01'
 GO
 
--- Produkta tirdzniecîba klientiem( kuriem klientiem produkts tika notirgots konkrçts produkts)
+-- Produkta tirdzniecÄ«ba klientiem( kuriem klientiem produkts tika notirgots konkrÄ“ts produkts)
     -- serija + nosaukums + daudzums no ProduktiPasutijuma + datums un klientaID no pasutijumi + klienta nos. no Klienti
 Select
 	p.KomplektesanasDatums,
@@ -304,12 +311,12 @@ Select
 		ON
 			p.KlientaID = k.ID
 	Where
-		pp.ProduktaSerija = '240502' and pp.ProduktaNosaukums = 'Banâni Mini, 12gab., CR' 
+		pp.ProduktaSerija = '240502' and pp.ProduktaNosaukums = 'Banï¿½ni Mini, 12gab., CR' 
 	order by p.KomplektesanasDatums
 Go
 
--- Provizoriskâ(pieòemot ka visi pasûtîjumi ir apmaksâti ) peïòa no produkta tirdzniecîbas
-    -- visu pasûtîjumu summçts(pârdoğanas cena* daudzums) - (pağizmaksa* piegâdâtais daudzums)
+-- ProvizoriskÄ( pieÅ†emot ka visi pasÅ«tÄ«jumi ir apmaksÄti ) peÄ¼Å†a no produkta tirdzniecÄ«bas
+    -- visu pasÅ«tÄ«jumu summÄ“ts( pÄrdoÅ¡anas cena* daudzums) - (paÅ¡izmaksa* piegÄdÄtais daudzums)
 Select 
 	distinct pa.Serija, pa.Nosaukums, pa.RekinaNr, pa.PiegadataisDaudzumsKg,
 	--cast(pa.IepirkumaCenaKg * 1.20 as smallmoney) AS PasizmaksaKg,
@@ -331,7 +338,7 @@ Select
 	Order By Pelna desc
 GO
 
-    -- ienâkumi no produktu tirdzniecîbas
+    -- ienÄkumi no produktu tirdzniecÄ«bas
     select 
         distinct ProduktaSerija, ProduktaNosaukums,
         sum(DaudzumsKg) over (partition by ProduktaSerija, ProduktaNosaukums) AS KopaPardotsKg,
@@ -340,7 +347,7 @@ GO
         from ProduktiPasutijuma
     go
 
--- Pârdoğanas ar zaudçjumiem( zem pağizmaksas)
+-- PÄrdoÅ¡anas ar zaudÄ“jumiem( zem paÅ¡izmaksas)
 Select 
 	pp.*, pa.IepirkumaCenaKG,
 	cast(pa.IepirkumaCenaKg * 1.2 as smallmoney) as Pasizmaksa,
@@ -357,9 +364,9 @@ Select
 	where
 		pp.PardosanasCenaKg < (pa.IepirkumaCenaKg * 1.20)
 go
--- Klientu sadalîjums pçc gûtâs peïòas
-    -- peïòas summa no klienta pasûtîjumiem, sakârtot klientus pçc peïòas
-		-- ProduktiPasutijuma + Pasutijumi + Klienti + ProduktuAtlikumi( produkta pağizmaksa)
+-- Klientu sadalÄ«jums pÄ“c gÅ«tÄs peÄ¼Å†as
+    -- peÄ¼Å†as summa no klienta pasÅ«tÄ«jumiem, sakÄrtot klientus pÄ“c peÄ¼Å†as
+		-- ProduktiPasutijuma + Pasutijumi + Klienti + ProduktuAtlikumi( produkta paÅ¡izmaksa)
 Select 
 	distinct k.Nosaukums AS Klients,
 	sum(

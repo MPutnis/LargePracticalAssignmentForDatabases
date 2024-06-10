@@ -1,4 +1,4 @@
-        -- Tabulu izveidoğana
+        -- Tabulu izveidoÅ¡ana
 
     --Darbinieki un Noliktavas
 
@@ -27,9 +27,9 @@ FOREIGN KEY (Darbavieta) REFERENCES
 Noliktavas(Numurs)
 GO
 
-    -- Piegâdâtâji un Piegâdes
+    -- PiegÄdÄtÄji un PiegÄdes
 
--- Piegâdâtâji
+-- PiegÄdÄtÄji
 CREATE TABLE Piegadataji(
     ID VARCHAR(6) NOT NULL PRIMARY KEY,
     Nosaukums NVARCHAR(100),
@@ -38,14 +38,14 @@ CREATE TABLE Piegadataji(
     RegistracijasNr VARCHAR(15)
 )
 GO
--- Piegâdes
+-- PiegÄdes
 CREATE TABLE Piegades(
     RekinaNr VARCHAR(10) NOT NULL PRIMARY KEY,
     PiegadesDatums DATE,
     PiegadatajaID VARCHAR(6) FOREIGN KEY REFERENCES Piegadataji(ID)
 )
 
-    -- Klienti, to Adreses un Pasûtîjumi
+    -- Klienti, to Adreses un PasÅ«tÄ«jumi
 
 -- Klienti
 CREATE TABLE Klienti(
@@ -65,7 +65,7 @@ CREATE TABLE KlientuAdreses(
         FOREIGN KEY REFERENCES Klienti(ID)  
 )
 GO
--- Pasûtîjumi
+-- PasÅ«tÄ«jumi
 CREATE TABLE Pasutijumi(
     PasutijumaNr VARCHAR(7) NOT NULL PRIMARY KEY,
     KomplektesanasDatums DATE,
@@ -78,7 +78,7 @@ CREATE TABLE Pasutijumi(
 )
 GO
 
-    -- Produktu Atlikums, Sadalîjums pa Noliktavâm un Pasûtîjumiem, Rezervâcijas
+    -- Produktu Atlikums, SadalÄ«jums pa NoliktavÄm un PasÅ«tÄ«jumiem, RezervÄcijas
 
 -- Produktu atlikums
 CREATE TABLE ProduktuAtlikums(
@@ -92,7 +92,7 @@ CREATE TABLE ProduktuAtlikums(
     IepirkumaCenaKg SMALLMONEY NOT NULL
 )
 GO
--- Produktu Sadalîjums
+-- Produktu SadalÄ«jums
 CREATE TABLE ProduktuSadalijums(
     NoliktavasNumurs TINYINT NOT NULL 
         FOREIGN KEY REFERENCES Noliktavas(Numurs),
@@ -100,12 +100,14 @@ CREATE TABLE ProduktuSadalijums(
     ProduktaNosaukums NVARCHAR(100) NOT NULL,
     FOREIGN KEY(ProduktaSerija,ProduktaNosaukums) 
         REFERENCES ProduktuAtlikums(Serija,Nosaukums),
+	PRIMARY KEY (NoliktavasNumurs, ProduktaSerija, ProduktaNosaukums),
     PiegadataisAtlikumsKg DECIMAL(8,3)
 )
 GO
 
--- Produkti Pasûtîjumâ
+-- Produkti PasÅ«tÄ«jumÄ
 CREATE TABLE ProduktiPasutijuma(
+    ID INT IDENTITY PRIMARY KEY, -- lai bÅ«tu primÄrÄ atslÄ“ga un pasÅ«tÄ«jumÄ varÄ“tu bÅ«t vairÄki vienÄdi produkti
     ProduktaSerija VARCHAR(7) NOT NULL,
     ProduktaNosaukums NVARCHAR(100) NOT NULL,
     FOREIGN KEY(ProduktaSerija,ProduktaNosaukums) 
@@ -116,8 +118,9 @@ CREATE TABLE ProduktiPasutijuma(
     PardosanasCenaKg SMALLMONEY
 )
 GO
--- Rezervâcijas
+-- RezervÄcijas
 CREATE TABLE Rezervacijas(
+    ID INT IDENTITY PRIMARY KEY, -- lai bÅ«tu primÄrÄ atslÄ“ga
     DarbiniekaID SMALLINT NOT NULL
     FOREIGN KEY REFERENCES Darbinieki(ID),
     ProduktaSerija VARCHAR(7) NOT NULL,
@@ -134,14 +137,14 @@ References Noliktavas(Numurs)
 
     -- Produktu Grupu tabulas
 
--- Vispârîgâs Produktu Grupas
+-- VispÄrÄ«gÄs Produktu Grupas
 CREATE TABLE VisparigasProduktuGrupas(
     Kods CHAR(5) NOT NULL PRIMARY KEY,
     Nosaukums NVARCHAR(20)
 )
 GO
 
--- Lielâs Produktu Grupas
+-- LielÄs Produktu Grupas
 CREATE TABLE LielasProduktuGrupas(
     Kods CHAR(5) NOT NULL PRIMARY KEY,
     Nosaukums NVARCHAR(20),
@@ -150,7 +153,7 @@ CREATE TABLE LielasProduktuGrupas(
 )
 GO
 
--- Ğkirnes (jeb Mazâs produktu grupas)
+-- Å kirnes (jeb MazÄs produktu grupas)
 CREATE TABLE Skirnes(
     Kods CHAR(5) NOT NULL PRIMARY KEY,
     Nosaukums NVARCHAR(20),
@@ -165,7 +168,7 @@ ALTER TABLE ProduktuAtlikums ADD
         REFERENCES Skirnes(Kods)
 GO
 
--- Funkcija  tekoğâ atlikuma aprçíinam 
+-- Funkcija  tekoÅ¡Ä atlikuma aprÄ“Ä·inam 
 CREATE FUNCTION dbo.AtlikumaAprekins (
     @NoliktavasNumurs TINYINT,
     @ProduktaSerija VARCHAR(7),
@@ -176,12 +179,12 @@ AS
 BEGIN
     DECLARE @Atlikums DECIMAL(8,3);
     SELECT @Atlikums = ISNULL(
-        -- Iegûst daudzumu kurğ tika piegâdâts uz noliktavu
+        -- IegÅ«st daudzumu kurÅ¡ tika piegÄdÄts uz noliktavu
         (SELECT PiegadataisAtlikumsKg FROM ProduktuSadalijums 
         WHERE ProduktaSerija = @ProduktaSerija 
         AND ProduktaNosaukums = @ProduktaNosaukums), 0
     ) - ISNULL(
-        -- saskaita visus atbilstoğâ produkta pârdotos daudzums atbilstoğajâ noliktavâ
+        -- saskaita visus atbilstoÅ¡Ä produkta pÄrdotos daudzums atbilstoÅ¡ajÄ noliktavÄ
         (SELECT SUM(PP.DaudzumsKg)
         FROM ProduktiPasutijuma PP
         INNER JOIN Pasutijumi P ON PP.PasutijumaNumurs = P.PasutijumaNr
